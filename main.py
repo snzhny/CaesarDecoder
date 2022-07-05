@@ -5,7 +5,7 @@ import string
 
 def engBruteforceDecrypt(enc_string):
     LettersAndDigits = string.ascii_letters + string.digits + string.punctuation #lowercase and uppercase eng aphabet + spec. symbols
-    print("ROT RIGHT") # Shift right(exp. +i shifts)
+    print("ROT RIGHT") # Shift right(exp. +i shifts) 
     for shift in range(len(enc_string)):
         encoded = ""
         for i in enc_string:
