@@ -1,22 +1,74 @@
 #!/usr/bin/python3
 
 from art import text2art
+import string
 
-print(text2art("Caesar cipher decoder"))
-# inputString = input("Input string")
-# inputShift = int(input("Offset/Key (number)"))
-inputString = "rovvy ofobilyni"
-inputShift = 10
-letters = []
 
-for j in inputString:
-    letters.append(j)
+def engBruteforceDecrypt(enc_string):
+    LettersAndDigits = string.ascii_letters + string.digits + string.punctuation
+    print("ROT RIGHT")
+    for shift in range(len(enc_string)):
+        encoded = ""
+        for i in enc_string:
+            if i in LettersAndDigits:
+                pos = LettersAndDigits.find(i)
+                pos -= shift
+                if pos < 0:
+                    pos += len(LettersAndDigits)
+                encoded += LettersAndDigits[pos]
+            else:
+                encoded += i
+        print(f"Shift {shift}: {encoded}")
 
-for i in range(len(letters)):
-    kek = ord(letters[i])-inputShift
-    print(chr(kek), end="")
+    print("ROT LEFT")
+    for shift in range(len(enc_string)):
+        encoded = ""
+        for i in enc_string:
+            if i in LettersAndDigits:
+                pos = LettersAndDigits.find(i)
+                pos += shift
+                if pos < 0:
+                    pos -= len(LettersAndDigits)
+                encoded += LettersAndDigits[pos]
+            else:
+                encoded -= i
+        print(f"Shift {shift}: {encoded}")
+
+
+def rusBruteforceDecrypt(enc_string):
+    LettersAndDigits = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
+    print("ROT RIGHT")
+    for shift in range(len(enc_string)):
+        encoded = ""
+        for i in enc_string:
+            if i in LettersAndDigits:
+                pos = LettersAndDigits.find(i)
+                pos -= shift
+                if pos < 0:
+                    pos += len(LettersAndDigits)
+                encoded += LettersAndDigits[pos]
+            else:
+                encoded += i
+        print(f"Shift {shift}: {encoded}")
+    print("ROT LEFT")
+    for shift in range(len(enc_string)):
+        encoded = ""
+        for i in enc_string:
+            if i in LettersAndDigits:
+                pos = LettersAndDigits.find(i)
+                pos += shift
+                if pos < 0:
+                    pos -= len(LettersAndDigits)
+                encoded += LettersAndDigits[pos]
+            else:
+                encoded -= i
+        print(f"Shift {shift}: {encoded}")
 
 if __name__ == '__main__':
-    pass
-
-
+    print(text2art("Caesar cipher decoder"))
+    inputLang = input("RUS(1) or ENG(2) string: ")
+    inputString = input("Input string: ")
+    if inputLang in ("1" or "rus" or "RUS"):
+        rusBruteforceDecrypt(inputString)
+    else:
+        engBruteforceDecrypt(inputString)
