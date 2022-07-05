@@ -3,10 +3,9 @@
 from art import text2art
 import string
 
-
 def engBruteforceDecrypt(enc_string):
-    LettersAndDigits = string.ascii_letters + string.digits + string.punctuation
-    print("ROT RIGHT")
+    LettersAndDigits = string.ascii_letters + string.digits + string.punctuation #lowercase and uppercase eng aphabet + spec. symbols
+    print("ROT RIGHT") # Shift right(exp. +i shifts)
     for shift in range(len(enc_string)):
         encoded = ""
         for i in enc_string:
@@ -20,7 +19,7 @@ def engBruteforceDecrypt(enc_string):
                 encoded += i
         print(f"Shift {shift}: {encoded}")
 
-    print("ROT LEFT")
+    print("ROT LEFT")# Shift left(exp. -i shifts)
     for shift in range(len(enc_string)):
         encoded = ""
         for i in enc_string:
@@ -36,7 +35,7 @@ def engBruteforceDecrypt(enc_string):
 
 
 def rusBruteforceDecrypt(enc_string):
-    LettersAndDigits = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
+    LettersAndDigits = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" # russian alphabet
     print("ROT RIGHT")
     for shift in range(len(enc_string)):
         encoded = ""
